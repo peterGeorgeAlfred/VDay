@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
@@ -21,25 +22,27 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         }
         p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
 
         /* Heart Animation */
         .heart {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background: red;
             position: absolute;
             clip-path: polygon(50% 15%, 100% 40%, 85% 100%, 50% 80%, 15% 100%, 0% 40%);
-            animation: float 3s infinite ease-in-out;
+            animation: float 5s infinite ease-in-out;
+            opacity: 0.8;
         }
         .heart:nth-child(2) { left: 20%; animation-duration: 4s; background: pink; }
         .heart:nth-child(3) { left: 40%; animation-duration: 5s; background: red; }
@@ -55,14 +58,17 @@
         /* Slideshow Styles */
         .slideshow-container {
             position: relative;
-            max-width: 500px;
+            max-width: 90%;
+            width: 400px;
             margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
         .slides {
             display: none;
             width: 100%;
-            border-radius: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
         }
         .prev, .next {
             position: absolute;
@@ -77,15 +83,31 @@
             font-weight: bold;
             transition: 0.3s;
         }
-        .prev { left: -40px; }
-        .next { right: -40px; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
         .prev:hover, .next:hover { background: white; }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .slideshow-container { width: 90%; }
+            .heart { width: 50px; height: 50px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            p { font-size: 0.9rem; }
+            .slideshow-container { width: 100%; }
+            .prev, .next { font-size: 18px; padding: 5px; }
+        }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>❤️ Happy Valentine's Day! ❤️ <br> Ratrotiiii ❤️</h1>
+        <h1>❤️ Happy Valentine's Day! ❤️<br> Ratrotiiiii ❤️</h1>
         <p>Wishing you love, happiness, and joy today and always!</p>
 
         <!-- Slideshow Container -->
@@ -131,8 +153,8 @@
             <img class="slides" src="images/39.jpeg" alt="Love Image 3">
             <img class="slides" src="images/40.jpeg" alt="Love Image 3">
             <img class="slides" src="images/41.jpeg" alt="Love Image 3">
-            <img class="slides" src="images/42.jpeg" alt="Love Image 3">        
-            
+            <img class="slides" src="images/42.jpeg" alt="Love Image 3">
+
             <!-- Navigation Buttons -->
             <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
             <a class="next" onclick="changeSlide(1)">&#10095;</a>
