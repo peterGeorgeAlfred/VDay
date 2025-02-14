@@ -158,8 +158,21 @@
             <!-- Navigation Buttons -->
             <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
             <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+             <!-- Play/Pause Button -->
+             <audio id="background-music" autoplay loop muted>
+                <source src="Sounds/1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        
+            <button id="play-button" style="display: none;">🔊 Play Music</button>
+
+            
         </div>
+        
     </div>
+
+    
 
     <!-- Floating Hearts -->
     <div class="heart"></div>
@@ -167,6 +180,8 @@
     <div class="heart"></div>
     <div class="heart"></div>
     <div class="heart"></div>
+
+   
 
     <script>
         let slideIndex = 0;
@@ -193,6 +208,33 @@
             }
             slides[slideIndex - 1].style.display = "block";
         }
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = document.getElementById("background-music");
+            let playButton = document.getElementById("play-button");
+
+            // Try to play automatically
+            audio.play().then(() => {
+                // If autoplay works, unmute the sound
+                audio.muted = false;
+            }).catch(() => {
+                // If autoplay fails, show the play button
+                playButton.style.display = "block";
+
+                // Play music when the user clicks the button
+                playButton.addEventListener("click", function () {
+                    audio.muted = false;
+                    audio.play();
+                    playButton.style.display = "none"; // Hide the button after playing
+                });
+            });
+
+            // Also listen for a user click anywhere to play music
+            document.body.addEventListener("click", () => {
+                audio.muted = false;
+                audio.play();
+                playButton.style.display = "none"; // Hide button if clicked anywhere
+            }, { once: true });
+        });
     </script>
 
 </body>
